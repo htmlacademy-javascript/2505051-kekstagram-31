@@ -40,6 +40,7 @@ const getObjectComment = () => ({
 const getPhotoDescription = () => ({
   id: getId(),
   url: `photos/-${getPhotoId()}.jpg`,
+  description: 'Описание фото',
   likes: getRandomInteger(MIN_LIKES, MAX_LIKES),
   comments: Array.from({length: getRandomInteger(0, 30)}, getObjectComment)
 });
