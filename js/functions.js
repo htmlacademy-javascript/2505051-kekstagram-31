@@ -25,3 +25,4 @@ const veryPalindrome = (string) => {
   let reverseString = normalisedString.split('').reverse().join('');
   return reverseString === normalisedString;
 }
+
