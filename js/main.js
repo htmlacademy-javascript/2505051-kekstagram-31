@@ -1,6 +1,4 @@
 import {getPhotoDescription} from './util.js';
+import {getThumbnails} from './thumbnail.js';
 
-// eslint-disable-next-line no-console
-console.log(
-  getPhotoDescription()
-);
+getThumbnails(getPhotoDescription());
