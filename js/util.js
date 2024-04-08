@@ -1,50 +1,60 @@
-import {
-  COMMENT,
-  NAME,
-  MIN_LIKES,
-  MAX_LIKES,
-  MIN_AVATAR,
-  MAX_AVATAR
-} from './data.js';
+// проверка длины строки
+const checkStringLength = (string, length) => string.length <= length;
 
-//генерируем случайное число
-const getRandomInteger = (a, b) => {
-  const randomMin = Math.ceil(Math.min(a, b));
-  const randomMax = Math.ceil(Math.max(a, b));
-  const result = Math.random() * (randomMax - randomMin + 1) + randomMin;
-  return Math.floor(result);
+checkStringLength('htmlacademy', 18);
+
+// проверка является ли строка палиндромом
+
+const checkPalindrome = (string) => {
+  let check = '';
+
+  for (let i = string.length - 1; i >= 0; i--) {
+    check += string[i];
+  }
+
+  return check.trim().toLowerCase() === string.trim().toLowerCase();
 };
 
-const createCount = () => {
-  let count = 0;
-  return function () {
-    count += 1;
-    return count;
-  };
+checkPalindrome('топот');
+
+// Функция, которая принимает строку, извлекает содержащиеся в ней цифры от 0 до 9
+
+const findInteger = (string) => {
+  if(string.match(/\d+/)) {
+    return string.replace(/\D/g, '');
+  } else {
+    return NaN;
+  }
 };
 
-//Получаем случайное значение элемента массива
-const gerRandomArrayElement = (element) => element[getRandomInteger(0, element.length - 1)];
+findInteger('ECMAScript 2022');
 
-//Создаем уникальные Id в диапазонах
-const getCommentId = createCount();
-const getId = createCount();
-const getPhotoId = createCount();
+//  Функция, которая принимает три параметра: исходную строку, минимальную длину и строку с добавочными символами — и возвращает исходную строку, дополненную указанными символами до заданной длины.
+const createFilePath = (initial, minLength, additional) => {
+  let repeatTimes = (minLength - initial.length) / additional.length;
+  if (initial.length < minLength && additional.length < minLength) {
+    while (repeatTimes > 0) {
+      if(initial.length <= additional.length) {
+        additional = additional.slice(0, (repeatTimes)) + additional;
+      }
+      additional = additional.slice(0, (minLength - initial.length));
+      repeatTimes--;
+    }
+    return additional + initial;
+  } if (initial.length < minLength && additional.length > minLength) {
+    while (repeatTimes > 0) {
+      additional = additional.slice(0, (minLength - initial.length));
+      repeatTimes--;
+    }
+    return additional + initial;
+  }
+  if (initial.length > minLength) {
+    return initial;
+  }
+};
 
-//Создаем объект фото
-const getObjectComment = () => ({
-  id: getCommentId(),
-  avatar: `img/avatar-${getRandomInteger(MIN_AVATAR, MAX_AVATAR)}.svg`,
-  message: gerRandomArrayElement(COMMENT),
-  name: gerRandomArrayElement(NAME)
-});
-
-const getPhotoDescription = () => ({
-  id: getId(),
-  url: `photos/-${getPhotoId()}.jpg`,
-  description: 'Описание фото',
-  likes: getRandomInteger(MIN_LIKES, MAX_LIKES),
-  comments: Array.from({length: getRandomInteger(0, 30)}, getObjectComment)
-});
-
-export { getPhotoDescription };
+createFilePath('1', 2, '0');
+createFilePath('1', 4, '0');
+createFilePath('q', 4, 'werty');
+createFilePath('q', 4, 'we');
+createFilePath('qwerty', 4, '0');

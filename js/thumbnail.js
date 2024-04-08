@@ -1,28 +1,42 @@
-const thumbnailTemplate = document
-  .querySelector('#picture')
-  .content.querySelector('.picture');
-const container = document.querySelector('.pictures');
+import { commentsListElement, onClickOpen, onClickClose, renderBigPicture, closeButton, bigPictureContainerElement } from './big-picture.js';
+import { createPosts } from './data.js';
+import { renderCommentItems } from './comment-list.js';
 
+const pictureTemplateElement = document.querySelector('#picture').content.querySelector('.picture');
 
-const createThumbnail = ({ comments, description, likes, url }) => {
-  const thumbnail = thumbnailTemplate.cloneNode(true);
+const pictureListElement = document.querySelector('.pictures');
 
-  thumbnail.querySelector('.picture__img').src = url;
-  thumbnail.querySelector('.picture__img').alt = description;
-  thumbnail.querySelector('.picture__likes').textContent = likes;
-  thumbnail.querySelector('.picture__comments').textContent = comments;
+const pictureListFragment = document.createDocumentFragment();
 
-  return thumbnail;
-};
+createPosts.forEach((createPost) => {
+  const pictureElement = pictureTemplateElement.cloneNode(true);
+  pictureElement.querySelector('.picture__img').src = createPost.url;
+  const pictureInfoElement = pictureElement.querySelector('.picture__info');
+  pictureInfoElement.querySelector('.picture__comments').textContent = createPost.comments.length;
+  pictureInfoElement.querySelector('.picture__likes').textContent = createPost.likes;
 
-const getThumbnails = (pictures) => {
-  const fragment = document.createDocumentFragment();
-  pictures.forEach((picture) => {
-    const thumbnail = createThumbnail(picture);
-    fragment.append(thumbnail);
+  pictureElement.addEventListener('click', (evt) => {
+    commentsListElement.innerHTML = '';
+    onClickOpen(evt);
+    renderBigPicture(createPost.url, createPost.likes, createPost.comments.length, createPost.description);
+    createPost.comments.forEach((comment) => {
+      renderCommentItems(comment.avatar, comment.name, comment.message);
+    });
   });
 
-  container.append(fragment);
-};
+  pictureListFragment.append(pictureElement);
+});
 
-export { getThumbnails };
+pictureListElement.append(pictureListFragment);
+
+closeButton.addEventListener('click', onClickClose);
+
+document.addEventListener('click', (evt) => {
+  if (evt.key === 'Escape') {
+    evt.preventDefault();
+    bigPictureContainerElement.classList.add('hidden');
+    document.body.classList.remove('modal-open');
+  }
+});
+
+export { pictureListElement };
