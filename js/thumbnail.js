@@ -1,6 +1,5 @@
 import { commentsListElement, onClickOpen, onClickClose, renderBigPicture, closeButton, bigPictureContainerElement } from './big-picture.js';
 import { createPosts } from './data.js';
-import { renderCommentItems } from './comment-list.js';
 
 const pictureTemplateElement = document.querySelector('#picture').content.querySelector('.picture');
 

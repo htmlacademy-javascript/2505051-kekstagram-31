@@ -4,9 +4,7 @@ const bigPictureImageElement = bigPictureContainerElement.querySelector('.big-pi
 
 const bigPictureImageContentElement = bigPictureContainerElement.querySelector('.big-picture__social');
 const bigPictureLikesCountElement = bigPictureImageContentElement.querySelector('.social__likes').querySelector('.likes-count');
-
 const bigPictureCommentsCountElement = bigPictureImageContentElement.querySelector('.social__comment-count').querySelector('.comments-count');
-
 const bigPictureCaptionElement = bigPictureImageContentElement.querySelector('.social__caption');
 
 const commentsListElement = bigPictureImageContentElement.querySelector('.social__comments');
@@ -16,7 +14,6 @@ const commentsLoaderButtonElement = bigPictureImageContentElement.querySelector(
 
 const closeButton = bigPictureContainerElement.querySelector('.big-picture__cancel');
 
-const onClickOpen = (evt) => {
   evt.preventDefault();
   bigPictureContainerElement.classList.remove('hidden');
   commentsCountElement.classList.add('hidden');
