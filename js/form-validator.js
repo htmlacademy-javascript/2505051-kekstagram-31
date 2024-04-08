@@ -34,3 +34,4 @@ const onSubmitForm = (evt) => {
 };
 
 imageUploadFormElement.addEventListener('submit', onSubmitForm);
+
