@@ -1,4 +1,3 @@
-import {getPhotoDescription} from './util.js';
-import {getThumbnails} from './thumbnail.js';
-
-getThumbnails(getPhotoDescription());
+import './data.js';
+import './util.js';
+import './thumbnail.js';
