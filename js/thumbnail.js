@@ -30,6 +30,8 @@ const renderThumbnailList = (posts) => {
     pictureElement.addEventListener('click', onThumbnailOpen);
   });
 
+  document.querySelectorAll('.picture').forEach((pictureElement) => pictureElement.remove());
+
   const pictureListFragment = document.createDocumentFragment();
   pictureListFragment.append(pictureElementFragment);
   pictureListElement.append(pictureListFragment);
