@@ -5,5 +5,5 @@ import './post-upload.js';
 import './form-validator.js';
 import './post-edit.js';
 import './post-filter.js';
-import './proceed-data.js';
 import './api.js';
+import './proceed-data.js';
