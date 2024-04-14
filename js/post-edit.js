@@ -13,12 +13,12 @@ const scaleReset = () => {
 
 const scaleBiggerImage = () => {
   scaleValueElement.value = `${currentValue += SCALE_STEP}%`;
-  imagePreviewElement.style.transform = `scale(${parseFloat(scaleValueElement.value) / 100})`;
+  imagePreviewElement.style.transform = `scale(${parseFloat(scaleValueElement.value) / MAX_VALUE})`;
 };
 
 const scaleSmallerImage = () => {
   scaleValueElement.value = `${currentValue -= SCALE_STEP}%`;
-  imagePreviewElement.style.transform = `scale(${parseFloat(scaleValueElement.value) / 100})`;
+  imagePreviewElement.style.transform = `scale(${parseFloat(scaleValueElement.value) / MAX_VALUE})`;
 };
 
 const scaleBiggerControl = () => {

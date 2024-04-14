@@ -11,7 +11,7 @@ const errorMessageTemplateElement = document.querySelector('#error').content.que
 const errorButtonElement = errorMessageTemplateElement.querySelector('.error__button');
 const submitButtonElement = imageUploadFormElement.querySelector('.img-upload__submit');
 
-const submitButtonText = {
+const SubmitButtonText = {
   IDLE: 'Опубликовать',
   SENDING: 'Публикация...'
 };
@@ -56,12 +56,12 @@ const onError = () => {
 
 const blockSubmitButton = () => {
   submitButtonElement.disabled = true;
-  submitButtonElement.textContent = submitButtonText.SENDING;
+  submitButtonElement.textContent = SubmitButtonText.SENDING;
 };
 
 const unblockSubmitButton = () => {
   submitButtonElement.disabled = false;
-  submitButtonElement.textContent = submitButtonText.IDLE;
+  submitButtonElement.textContent = SubmitButtonText.IDLE;
 };
 
 const validateHashtag = () => {

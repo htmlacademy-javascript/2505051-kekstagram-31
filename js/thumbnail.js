@@ -1,11 +1,8 @@
 import { bigPictureContainerElement, renderBigPicture, renderShownCommentsList } from './big-picture.js';
-//import { createPosts } from './data.js';
 
 const pictureTemplateElement = document.querySelector('#picture').content.querySelector('.picture');
 
 const pictureListElement = document.querySelector('.pictures');
-
-//const similarPosts = createPosts();
 
 const renderThumbnailList = (posts) => {
   const pictureElementFragment = document.createDocumentFragment();
@@ -36,7 +33,5 @@ const renderThumbnailList = (posts) => {
   pictureListFragment.append(pictureElementFragment);
   pictureListElement.append(pictureListFragment);
 };
-
-//renderThumbnailList(similarPosts);
 
 export { renderThumbnailList, pictureListElement };
